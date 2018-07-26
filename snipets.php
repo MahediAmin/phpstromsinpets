@@ -38,3 +38,19 @@ function demoTheme_assets_list()
 
 }
 add_action("wp_enqueue_scripts", "demoTheme_assets_list");
+
+
+
+// defeault loop
+[lp]
+if (have_posts()) :
+    while (have_posts()) : the_post(); ?>
+
+        <h2>post ace</h2>
+
+    <?php endwhile;
+    else : ?>
+
+        <h2>post nai</h2>
+
+<?php endif;
