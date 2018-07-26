@@ -21,3 +21,20 @@ function demoTheme_bootstraping()
 
 }
 add_action("after_setup_theme", "demoTheme_bootstraping");
+
+// cssand and js add korar sinpites
+[cssjs]
+
+
+/*
+ * Demo Theme style and scripts enquee
+ */
+
+function demoTheme_assets_list()
+{
+
+    wp_enqueue_style("demoThemcss", get_stylesheet_uri());
+
+
+}
+add_action("wp_enqueue_scripts", "demoTheme_assets_list");
