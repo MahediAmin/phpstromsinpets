@@ -11,9 +11,10 @@
  *
  */
 
-function demoTheme_bootstraping(){
+function demoTheme_bootstraping()
+{
 
-    load_textdomain(demoThem);
+    load_theme_textdomain("demoThem");
     add_theme_support("post-thumbnails");
     add_theme_support("title-tag");
 
