@@ -8,7 +8,6 @@
 
 /*
  * Demo Theme Bootstraping
- *
  */
 
 function demoTheme_bootstraping()
@@ -17,6 +16,7 @@ function demoTheme_bootstraping()
     load_theme_textdomain("demoThem");
     add_theme_support("post-thumbnails");
     add_theme_support("title-tag");
+    add_theme_support("custom-header");
 
 
 }
@@ -58,6 +58,8 @@ if (have_posts()) :
 
 // wp_inlne fucntion
 [wpinline_fun]
+
+
 /*
  * wp head e inline style
  */
@@ -65,17 +67,29 @@ if (have_posts()) :
 function demoTheme_inlinestyle()
 {
     if (is_home()) {
-
         ?>
-
         <style>
             body{
                 background: #ccc;
             }
         </style>
+ <?php
 
-
- <?
 }
+if (is_front_page()) {
+    ?>
+        <style>
+            .site-header{
+                background-image: url(<?php echo header_image(); ?>);
+                height: 50vh;
+                background-size: cover;
+                background-position: center center;
+
+            }
+        </style>
+
+        <?php
+
+    }
 }
 add_action("wp_head", "demoTheme_inlinestyle");
