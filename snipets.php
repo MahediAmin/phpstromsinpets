@@ -6,7 +6,7 @@
 // after_setup_theme_function with parametter
 [afc]
 
-/*
+/**
  * Demo Theme Bootstraping
  */
 
@@ -16,6 +16,16 @@ function demoTheme_bootstraping()
     load_theme_textdomain("demoThem");
     add_theme_support("post-thumbnails");
     add_theme_support("title-tag");
+    add_theme_support("post-formats", array(
+        "aside",
+        "gallery",
+        "image",
+        "quote",
+        "status",
+        "video",
+        "audio",
+        "chat"
+    ));
     $demoTheme_custom_theader_detils = array(
         "header_text" => true,
         "default-text-color" => "#333",
@@ -32,6 +42,7 @@ function demoTheme_bootstraping()
     );
     add_theme_support("custom-logo", $demoTheme_custom_logo_css);
     add_theme_support("custom-background");
+    add_theme_support('html5', array('search-form'));
 
 
 }
