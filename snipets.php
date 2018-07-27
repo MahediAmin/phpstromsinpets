@@ -54,3 +54,28 @@ if (have_posts()) :
         <h2>post nai</h2>
 
 <?php endif;
+
+
+// wp_inlne fucntion
+[wpinline_fun]
+/*
+ * wp head e inline style
+ */
+
+function demoTheme_inlinestyle()
+{
+    if (is_home()) {
+
+        ?>
+
+        <style>
+            body{
+                background: #ccc;
+            }
+        </style>
+
+
+ <?
+}
+}
+add_action("wp_head", "demoTheme_inlinestyle");
