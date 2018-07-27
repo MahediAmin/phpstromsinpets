@@ -16,7 +16,11 @@ function demoTheme_bootstraping()
     load_theme_textdomain("demoThem");
     add_theme_support("post-thumbnails");
     add_theme_support("title-tag");
-    add_theme_support("custom-header");
+    $demoTheme_custom_text_color = array(
+        "header_text" => true,
+        "default-text-color" => "#333"
+    );
+    add_theme_support("custom-header", $demoTheme_custom_text_color);
 
 
 }
@@ -60,6 +64,7 @@ if (have_posts()) :
 [wpinline_fun]
 
 
+
 /*
  * wp head e inline style
  */
@@ -77,19 +82,39 @@ function demoTheme_inlinestyle()
 
 }
 if (is_front_page()) {
-    ?>
-        <style>
-            .site-header{
-                background-image: url(<?php echo header_image(); ?>);
-                height: 50vh;
-                background-size: cover;
-                background-position: center center;
+    if (current_theme_supports("custom-header")) {
+        ?>
 
-            }
-        </style>
 
-        <?php
+            <style>
+                .site-header{
+                    background-image: url(<?php header_image(); ?>);
+                    height: 50vh;
+                    background-size: cover;
+                    background-position: center center;
 
+                }
+                h3{
+                    color: #<?php echo get_header_textcolor(); ?>;
+                    margin-top: 100px;
+                    text-align: center;
+                    font-size: 45px;
+                <?php
+                if (!display_header_text()) {
+                    echo "display: none;";
+                }
+                ?>
+
+                }
+            </style>
+
+
+
+
+
+            <?php
+
+        }
     }
 }
 add_action("wp_head", "demoTheme_inlinestyle");
