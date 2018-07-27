@@ -16,11 +16,22 @@ function demoTheme_bootstraping()
     load_theme_textdomain("demoThem");
     add_theme_support("post-thumbnails");
     add_theme_support("title-tag");
-    $demoTheme_custom_text_color = array(
+    $demoTheme_custom_theader_detils = array(
         "header_text" => true,
-        "default-text-color" => "#333"
+        "default-text-color" => "#333",
+        "width" => '1920',
+        "height" => '650',
+        "flex_height" => true,
+        "flex_width" => true
+
     );
-    add_theme_support("custom-header", $demoTheme_custom_text_color);
+    add_theme_support("custom-header", $demoTheme_custom_theader_detils);
+    $demoTheme_custom_logo_css = array(
+        "width" => '100',
+        "height" => '100'
+    );
+    add_theme_support("custom-logo", $demoTheme_custom_logo_css);
+    add_theme_support("custom-background");
 
 
 }
