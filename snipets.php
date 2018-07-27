@@ -140,3 +140,23 @@ if (is_front_page()) {
     }
 }
 add_action("wp_head", "demoTheme_inlinestyle");
+
+
+
+/**
+ * hilight search result
+ */
+
+
+ [searchH]
+    function demoTheme_search_result($text)
+{
+    if (is_search()) {
+        $pattern = '/(' . join('|', explode(' ', get_search_query())) . ')/i';
+        $text = preg_replace($pattern, '<span class="badge badge-primary">\0</span>', $text);
+    }
+    return $text;
+}
+add_filter('the_content', 'demoTheme_search_result');
+add_filter('the_excerpt', 'demoTheme_search_result');
+add_filter('the_title', 'demoTheme_search_result');
