@@ -55,11 +55,20 @@ add_action("after_setup_theme", "demoTheme_bootstraping");
 /*
  * Demo Theme style and scripts enquee
  */
+function demoTheme_assets_list(){
 
-function demoTheme_assets_list()
-{
 
-    wp_enqueue_style("demoThemcss", get_stylesheet_uri());
+
+
+    wp_enqueue_style("demoTheme-basecss", get_theme_file_uri("assets/css/base.css"), null, '0.1.0', 'all');
+    wp_enqueue_style("demoTheme-css", get_stylesheet_uri());
+
+
+    wp_enqueue_script('jquery');
+    wp_enqueue_script("demoThememodazanier-js", get_theme_file_uri("assets/js/modernizr.js"), array("jquery"), '1.0.0', false);
+
+
+
 
 
 }
