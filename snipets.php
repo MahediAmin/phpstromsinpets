@@ -169,3 +169,28 @@ add_action("wp_head", "demoTheme_inlinestyle");
 add_filter('the_content', 'demoTheme_search_result');
 add_filter('the_excerpt', 'demoTheme_search_result');
 add_filter('the_title', 'demoTheme_search_result');
+
+
+/*
+ * pagination for listed pagination
+ */
+[pagination]
+
+function philosophy_pagination()
+{
+    global $wp_query;
+    $links = paginate_links(array(
+        'current' => max(1, get_query_var('paged')),
+        'total' => $wp_query->max_num_pages,
+        'type' => 'list',
+        'mid_size' => 3
+    ));
+    $links = str_replace("page-numbers", "pgn__num", $links);
+    $links = str_replace("<ul class='pgn__num'>", "<ul>", $links);
+    $links = str_replace("next pgn__num", "pgn__next", $links);
+    $links = str_replace("prev pgn__num", "pgn__prev", $links);
+    echo $links;
+}
+
+// echo the function
+< ? php philosophy_pagination (); ?>
