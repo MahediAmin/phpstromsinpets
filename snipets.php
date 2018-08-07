@@ -199,7 +199,7 @@ function philosophy_pagination()
 /*
 * wp_menu query with child class
 */
-
+[menu2]
 <?php
 $philosophy_menu = wp_nav_menu(array(
     'theme_location' => 'topmenu',
@@ -210,3 +210,15 @@ $philosophy_menu = wp_nav_menu(array(
 $philosophy_menu = str_replace("menu-item-has-children", "menu-item-has-children has-children", $philosophy_menu);
 echo $philosophy_menu;
 ?>
+
+[menu1]
+<?php wp_nav_menu(array(
+
+    'theme_location' => 'top_menu',
+    'menu_id' => 'top_menu',
+    'menu_class' => 'header__nav',
+    'container' => '',
+
+
+
+)); ?>
