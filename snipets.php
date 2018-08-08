@@ -225,7 +225,7 @@ echo $philosophy_menu;
 
 
 // this code for if the post type is not for gallery function will destroy
-    
+    [gal]
     $post_id = null;
     if ( isset( $_REQUEST['post'] ) || isset( $_REQUEST['post_ID'] ) ) {
         $post_id = empty( $_REQUEST['post_ID'] ) ? $_REQUEST['post'] : $_REQUEST['post_ID'];
@@ -233,3 +233,34 @@ echo $philosophy_menu;
     if ( ! $post_id || get_post_format( $post_id ) != "gallery" ) {
         return;
     }
+
+// single page prev navigation
+
+
+    <?php
+    $philosophy_prev_post = get_previous_post();
+    if ($philosophy_prev_post) :
+    ?>
+    <a href="<?php echo get_the_permalink($philosophy_prev_post); ?>" rel="prev">
+        <span><?php _e("Previous Post", "philosophy"); ?></span>
+        <?php echo get_the_title($philosophy_prev_post); ?>
+    </a>
+<?php
+endif;
+?>
+
+
+
+// single page next navagtion
+
+<?php
+$philosophy_next_post = get_next_post();
+if ($philosophy_next_post) :
+?>
+<a href="<?php echo get_the_permalink($philosophy_next_post); ?>" rel="next">
+    <span><?php _e("Next Post", "philosophy"); ?></span>
+    <?php echo get_the_title($philosophy_next_post); ?>
+</a>
+<?php
+endif;
+?>
