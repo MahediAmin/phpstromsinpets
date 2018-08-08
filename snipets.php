@@ -222,3 +222,14 @@ echo $philosophy_menu;
 
 
 )); ?>
+
+
+// this code for if the post type is not for gallery function will destroy
+    
+    $post_id = null;
+    if ( isset( $_REQUEST['post'] ) || isset( $_REQUEST['post_ID'] ) ) {
+        $post_id = empty( $_REQUEST['post_ID'] ) ? $_REQUEST['post'] : $_REQUEST['post_ID'];
+    }
+    if ( ! $post_id || get_post_format( $post_id ) != "gallery" ) {
+        return;
+    }
