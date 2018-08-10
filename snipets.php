@@ -298,3 +298,10 @@ FORM;
 }
 add_filter( "get_search_form", "philosophy_search_form" );
 
+// customizer logo upload option
+<?php if (has_custom_logo()) {
+    the_custom_logo();
+} else {
+    echo "<h1><a href='" . home_url("/") . "'>" . get_bloginfo('name') . "</a></h1>";
+}
+?>
